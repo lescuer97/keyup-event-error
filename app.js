@@ -89,8 +89,6 @@ class EditableTextElement extends HTMLElement {
       this.$inputElement.focus();
     });
 
-    const controller = new AbortController();
-
     // check for outside click from element
     document.addEventListener(
       "click",
@@ -101,8 +99,7 @@ class EditableTextElement extends HTMLElement {
           this.dispatchEvent(new CustomEvent("editableTextCancelPressed"));
           controller.abort();
         }
-      },
-      { signal: controller.signal },
+      }
     );
 
     // check for outside keyup from document
@@ -132,12 +129,10 @@ class EditableTextElement extends HTMLElement {
             bubbles: true,
           });
           this.dispatchEvent(customEvent);
-          controller.abort();
         }
         event.preventDefault();
         event.stopImmediatePropagation();
-      },
-      { signal: controller.signal },
+      }
     );
 
   }
