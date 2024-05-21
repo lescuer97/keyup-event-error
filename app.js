@@ -97,7 +97,6 @@ class EditableTextElement extends HTMLElement {
 
         if (outsideClick) {
           this.dispatchEvent(new CustomEvent("editableTextCancelPressed"));
-          controller.abort();
         }
       }
     );
@@ -111,7 +110,6 @@ class EditableTextElement extends HTMLElement {
           this.dispatchEvent(new CustomEvent("editableTextCancelPressed"));
           // remove focus class from wrap
           this.$wrap.classList.remove("focus");
-          controller.abort();
           event.stopPropagation();
           event.preventDefault();
           return;
